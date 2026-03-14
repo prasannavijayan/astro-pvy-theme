@@ -1,0 +1,42 @@
+---
+title: "Tailwind CSS Tips & Tricks"
+description: "Advanced tips for working with Tailwind CSS in your projects."
+date: 2024-02-01
+tags: ["tailwind", "css", "tips"]
+---
+
+# Tailwind CSS Tips & Tricks
+
+Tailwind CSS is a utility-first CSS framework that makes styling your projects fast and efficient.
+
+## Custom Colors
+
+Extend your color palette in `tailwind.config.js`:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: '#eff6ff',
+          500: '#3b82f6',
+          900: '#1e3a8a',
+        }
+      }
+    }
+  }
+}
+```
+
+## Using @apply
+
+For repeated utility classes, use `@apply`:
+
+```css
+.btn {
+  @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600;
+}
+```
+
+This makes your code more maintainable and readable.

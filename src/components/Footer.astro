@@ -1,0 +1,38 @@
+---
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { href: 'https://github.com', label: 'GitHub', icon: 'github' },
+  { href: 'https://twitter.com', label: 'Twitter', icon: 'twitter' },
+  { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'linkedin' },
+];
+---
+
+<footer class="bg-primary text-white mt-auto">
+  <div class="container py-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left">
+        <p class="text-lg font-bold">PVY Theme</p>
+        <p class="text-gray-400 text-sm mt-1">A minimalist portfolio theme for Astro</p>
+      </div>
+
+      <div class="flex items-center gap-6">
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors"
+            aria-label={link.label}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+      <p>&copy; {currentYear} All rights reserved.</p>
+    </div>
+  </div>
+</footer>

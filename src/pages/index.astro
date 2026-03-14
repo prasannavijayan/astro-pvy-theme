@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latestPosts = sortedPosts.slice(0, 3);
+
+const projects = [
+  {
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce solution with React and Node.js',
+    tech: ['React', 'Node.js', 'PostgreSQL'],
+    href: '#',
+  },
+  {
+    title: 'Task Manager',
+    description: 'Productivity app with real-time collaboration',
+    tech: ['Vue.js', 'Firebase', 'Tailwind'],
+    href: '#',
+  },
+  {
+    title: 'Weather Dashboard',
+    description: 'Beautiful weather app with interactive maps',
+    tech: ['React', 'OpenWeather API', 'Leaflet'],
+    href: '#',
+  },
+];
+---
+
+<BaseLayout title="Home">
+  <!-- Hero Section -->
+  <section class="bg-white">
+    <div class="container py-20 md:py-32">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-primary mb-6">
+          Hi, I'm <span class="text-accent">Prasanna</span>
+        </h1>
+        <p class="text-xl text-secondary mb-8 leading-relaxed">
+          A full-stack developer passionate about building modern web applications
+          and creating delightful user experiences. I specialize in React, Astro,
+          and cloud technologies.
+        </p>
+        <div class="flex gap-4">
+          <a href="/projects" class="btn btn-primary">
+            View Projects
+          </a>
+          <a href="/contact" class="btn border border-gray-200 hover:border-accent hover:text-accent">
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-16 bg-gray-50">
+    <div class="container">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-primary">Featured Projects</h2>
+        <a href="/projects" class="text-accent hover:underline">
+          View all
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Posts -->
+  <section class="py-16">
+    <div class="container">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-primary">Latest Posts</h2>
+        <a href="/blog" class="text-accent hover:underline">
+          View all
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {latestPosts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

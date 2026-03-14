@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href?: string;
+  tech: string[];
+  image?: string;
+}
+
+const { title, description, href, tech, image } = Astro.props;
+---
+
+<article class="card overflow-hidden">
+  {image && (
+    <div class="aspect-video bg-gray-100 overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  )}
+
+  <div class="p-6">
+    <h3 class="text-lg font-semibold text-primary mb-2">
+      {href ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+          {title}
+        </a>
+      ) : (
+        title
+      )}
+    </h3>
+
+    <p class="text-secondary text-sm mb-4">
+      {description}
+    </p>
+
+    <div class="flex flex-wrap gap-2">
+      {tech.map((t) => (
+        <span class="text-xs px-2 py-1 bg-accent/10 text-accent rounded">
+          {t}
+        </span>
+      ))}
+    </div>
+  </div>
+</article>

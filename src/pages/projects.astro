@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce solution built with React and Node.js. Features include user authentication, shopping cart, payment integration, and an admin dashboard.',
+    tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+    href: '#',
+  },
+  {
+    title: 'Task Manager',
+    description: 'A productivity application with real-time collaboration features. Users can create tasks, assign them to team members, and track progress.',
+    tech: ['Vue.js', 'Firebase', 'Tailwind CSS'],
+    href: '#',
+  },
+  {
+    title: 'Weather Dashboard',
+    description: 'An interactive weather application with beautiful visualizations. Displays current conditions, forecasts, and interactive maps.',
+    tech: ['React', 'OpenWeather API', 'Leaflet'],
+    href: '#',
+  },
+  {
+    title: 'Portfolio Theme',
+    description: 'A customizable portfolio theme for developers built with Astro and Tailwind CSS. Lightweight, fast, and easy to customize.',
+    tech: ['Astro', 'Tailwind CSS', 'TypeScript'],
+    href: '#',
+  },
+  {
+    title: 'Chat Application',
+    description: 'Real-time chat application with support for channels, direct messages, and file sharing. Built with modern web technologies.',
+    tech: ['React', 'Socket.io', 'MongoDB'],
+    href: '#',
+  },
+  {
+    title: 'Blog Platform',
+    description: 'A static blog platform with MDX support, syntax highlighting, and RSS feed generation. Optimized for performance.',
+    tech: ['Astro', 'MDX', 'RSS'],
+    href: '#',
+  },
+];
+---
+
+<BaseLayout title="Projects" description="Portfolio of my recent work and side projects">
+  <section class="container py-12">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold text-primary mb-4">Projects</h1>
+      <p class="text-lg text-secondary">
+        A collection of projects I've worked on
+      </p>
+    </header>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
